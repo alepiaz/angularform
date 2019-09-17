@@ -3,54 +3,54 @@
 
     <div class="py-5 text-center">
         <h1>Inserisci i tuoi dati</h1>
-        <form #userForm="ngForm">
+        <form #userForm="ngForm" ngNativeValidate>
 
-            {{ userForm.value | json}}
+            {{ userForm.value | json }}
             <div class="form-row">
                 <div class="form-group col-md-6">
 
-                    <input type="text" class="form-control" name="first-name" placeholder="Nome" ngModel>
+                    <input type="text" class="form-control" name="first-name" placeholder="Nome" pattern="[A-Za-z ]{2,}" required ngModel>
                 </div>
                 <div class="form-group col-md-6">
 
-                    <input type="text" class="form-control" name="last-name" placeholder="Cognome" ngModel>
+                    <input type="text" class="form-control" name="last-name" placeholder="Cognome" pattern="[A-Za-z ]{2,}" required ngModel>
                 </div>
             </div>
             <div class="form-group">
 
-                <input type="email" class="form-control" name="email" placeholder="Email" ngModel>
+                <input type="email" class="form-control" name="email" placeholder="Email" required ngModel>
             </div>
             <div class="form-group">
 
-                <input type="text" class="form-control" name="number" placeholder="Mobile" ngModel>
+                <input type="text" class="form-control" name="number" placeholder="Mobile" pattern="[0-9]{9,20}" required ngModel>
             </div>
             <div class="form-group">
-                <input type="date" class="form-control" name="birth" ngModel>
+                <input type="date" class="form-control" name="birth" min="1900-01-01" [max]="checkDate()" required ngModel>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-10">
 
-                    <input type="text" class="form-control" name="address" placeholder="Indirizzo" ngModel>
+                    <input type="text" class="form-control" name="address" placeholder="Indirizzo" required ngModel>
                 </div>
                 <div class="form-group col-md-2">
 
-                    <input type="text" class="form-control" name="civnumber" placeholder="Civico" ngModel>
+                    <input type="text" class="form-control" name="civnumber" placeholder="Civico" pattern="[0-9]{1,4}" required ngModel>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-10">
 
-                    <input type="text" class="form-control" name="city" placeholder="Comune" ngModel>
+                    <input type="text" class="form-control" name="city" placeholder="Comune" required ngModel>
                 </div>
                 <div class="form-group col-md-2">
 
-                    <input type="text" class="form-control" name="zipcode" placeholder="CAP" ngModel>
+                    <input type="text" class="form-control" name="zipcode" placeholder="CAP" pattern="[0-9]{5}" required ngModel>
                 </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">CONTINUA</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" >CONTINUA</button>
 
 
         </form>
